@@ -386,6 +386,7 @@ footer {
   }
   .tools {
     font-size: 0.5rem;
+    display: block;
   }
   .work__title {
     font-size: 2rem;
