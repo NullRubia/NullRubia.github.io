@@ -361,6 +361,11 @@ footer {
 }
 /* 화면 너비가 767px 이하일 때(모바일) */
 @media (max-width: 767px) {
+  .header {
+    display: block;
+    align-items: center;
+    z-index: 1;
+  }
   .header__menu {
     display: flex;
     gap: 1px;
