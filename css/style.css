@@ -363,10 +363,14 @@ footer {
 @media (max-width: 767px) {
   .header__menu {
     display: flex;
-    gap: 2px;
+    gap: 1px;
+  }
+
+  .header__menu__item {
+    padding: 4px 8px;
   }
   .header__menu > li {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
   }
   .job {
     display: block;
