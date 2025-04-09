@@ -344,3 +344,68 @@ footer {
 .contact__href:hover {
   color: blue;
 }
+
+/* 화면 너비가 768px 이상 1023 이하일 때 (태블릿) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .job {
+    justify-content: center;
+  }
+  .job__name {
+    font-size: 2.3rem;
+    text-align: center;
+  }
+  .job__preiod {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+/* 화면 너비가 767px 이하일 때(모바일) */
+@media (max-width: 767px) {
+  .header__menu {
+    display: flex;
+    gap: 2px;
+  }
+  .header__menu > li {
+    font-size: 0.8rem;
+  }
+  .job {
+    display: block;
+  }
+  .job__img {
+    width: 80%;
+    height: 80%;
+    margin-left: 10%;
+  }
+  .job__name {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .job__preiod {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .tools {
+    font-size: 0.5rem;
+  }
+  .work__title {
+    font-size: 2rem;
+  }
+  .work__p {
+    font-size: 1rem;
+  }
+  .work__img {
+    width: 80%;
+    height: 80%;
+  }
+  .license__Box {
+    display: block;
+  }
+  .license__description {
+    text-align: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+}
