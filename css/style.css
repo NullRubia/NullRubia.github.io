@@ -366,7 +366,7 @@ footer {
     gap: 2px;
   }
   .header__menu > li {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
   }
   .job {
     display: block;
