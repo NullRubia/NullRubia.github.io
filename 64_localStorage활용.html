@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>localStorage활용</title>
+  </head>
+  <body>
+    <button onclick="toggleTheme()">테마 변경</button>
+    <p>현재 테마: <span id="themeText"></span></p>
+
+    <script>
+      const body = document.body;
+
+      function applyTheme(theme) {
+        body.style.backgroundColor = theme === "dark" ? "#222" : "#fff";
+        //배경색을 테마가 다크라면 #222, 테마가 다크가 아닌경우 #fff로 설정
+        body.style.color = theme === "dark" ? "#fff" : "#000";
+        document.getElementById("themeText").innerText = theme;
+      }
+
+      function toggleTheme() {
+        const current = localStorage.getItem("theme") || "light";
+        //아이템을 가져왔을때 테마가 없는 null이면 false 가 출력.
+        //light는 값이 있기때문에 true가 출력.
+        //OR연산자를 사용했음으로 둘중 하나만 true여도 true가 출력
+        //즉, 비어있는경우 true 값인 light가 값에 저장됨.
+        //이미 값이 있는 경우 기존 값이 그대로 유지됨.
+        const next = current === "light" ? "dark" : "light";
+        //테마가 라이트라면 다크로, 라이트가 아니라면 라이트로 변경
+        localStorage.setItem("theme", next);
+        applyTheme(next);
+      }
+
+      applyTheme(localStorage.getItem("theme") || "light");
+    </script>
+  </body>
+</html>
