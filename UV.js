@@ -92,7 +92,7 @@ function moveMapByCityName(address) {
   });
 }
 
-function initMap() {
+/*function initMap() {
   map = new kakao.maps.Map(document.getElementById("map"), {
     center: new kakao.maps.LatLng(37.566826, 126.9786567),
     level: 9,
@@ -110,3 +110,4 @@ if (window.kakao && kakao.maps && kakao.maps.load) {
     }
   });
 }
+*/
