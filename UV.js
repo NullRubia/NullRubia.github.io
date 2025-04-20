@@ -7,7 +7,7 @@ function getUVIndex() {
   const regionName = regionSelect.options[regionSelect.selectedIndex].text;
 
   const serviceKey =
-    "vZcbeZUzwbrgx0iB/POXYTFGBY7GoKnVTELcbLYcYjPk5gPwiLApjLiyxa44E0yYtTKduHkwxuvtO4UQq7l5Yg=="; // 실제 키로 교체
+    "vZcbeZUzwbrgx0iB/POXYTFGBY7GoKnVTELcbLYcYjPk5gPwiLApjLiyxa44E0yYtTKduHkwxuvtO4UQq7l5Yg==";
   const now = new Date();
   const yyyy = now.getFullYear();
   const mm = String(now.getMonth() + 1).padStart(2, "0");
@@ -64,9 +64,6 @@ function getUVIndex() {
       }
 
       document.getElementById("warning").innerText = warningText;
-
-      // 지도 이동
-      moveMapByCityName(regionName);
     })
     .catch((error) => {
       console.error("에러 발생:", error);
@@ -76,6 +73,11 @@ function getUVIndex() {
 }
 
 function moveMapByCityName(address) {
+  if (!window.kakao || !kakao.maps || !kakao.maps.services) {
+    console.warn("Kakao 지도 API가 아직 로드되지 않았습니다.");
+    return;
+  }
+
   const geocoder = new kakao.maps.services.Geocoder();
   geocoder.addressSearch(address, function (result, status) {
     if (status === kakao.maps.services.Status.OK) {
@@ -97,16 +99,29 @@ function initMap() {
     center: new kakao.maps.LatLng(37.566826, 126.9786567),
     level: 9,
   });
-  getUVIndex(); // 초기 로딩
 }
+
 if (window.kakao && kakao.maps && kakao.maps.load) {
-  kakao.maps.load(initMap);
+  kakao.maps.load(() => {
+    initMap();
+  });
 } else {
   window.addEventListener("load", () => {
     if (window.kakao && kakao.maps && kakao.maps.load) {
-      kakao.maps.load(initMap);
+      kakao.maps.load(() => {
+        initMap();
+      });
     } else {
       console.error("Kakao Maps SDK가 로드되지 않았습니다.");
     }
   });
+}
+
+function fetchUVAndMoveMap() {
+  getUVIndex(); 
+  moveMapByCityName(
+    document.getElementById("region").options[
+      document.getElementById("region").selectedIndex
+    ].text
+  );
 }
