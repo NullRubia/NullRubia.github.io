@@ -63,8 +63,8 @@ function getUVIndex() {
         warningText = "낮음: 자외선 걱정은 적습니다.";
       }
 
-      document.getElementById("warning").innerText = warningText;}}
-/*
+      document.getElementById("warning").innerText = warningText;
+
       // 지도 이동
       moveMapByCityName(regionName);
     })
@@ -111,4 +111,3 @@ if (window.kakao && kakao.maps && kakao.maps.load) {
     }
   });
 }
-*/
