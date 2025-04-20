@@ -99,3 +99,11 @@ function initMap() {
   });
   getUVIndex(); // 초기 로딩
 }
+if (window.kakao && kakao.maps && kakao.maps.load) {
+  kakao.maps.load(initMap);
+} else {
+  // SDK가 아직 로드되지 않았을 경우 대비
+  window.addEventListener("load", () => {
+    kakao.maps.load(initMap);
+  });
+}
