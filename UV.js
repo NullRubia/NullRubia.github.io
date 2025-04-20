@@ -92,12 +92,10 @@ function moveMapByCityName(address) {
   });
 }
 
-window.onload = function () {
-  kakao.maps.load(function () {
-    map = new kakao.maps.Map(document.getElementById("map"), {
-      center: new kakao.maps.LatLng(37.566826, 126.9786567),
-      level: 9,
-    });
-    getUVIndex(); // 초기 로딩
+function initMap() {
+  map = new kakao.maps.Map(document.getElementById("map"), {
+    center: new kakao.maps.LatLng(37.566826, 126.9786567),
+    level: 9,
   });
-};
+  getUVIndex(); // 초기 로딩
+}
