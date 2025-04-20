@@ -64,7 +64,7 @@ function getUVIndex() {
       }
 
       document.getElementById("warning").innerText = warningText;
-
+/*
       // 지도 이동
       moveMapByCityName(regionName);
     })
@@ -75,7 +75,7 @@ function getUVIndex() {
     });
 }
 
-/*
+
 function moveMapByCityName(address) {
   const geocoder = new kakao.maps.services.Geocoder();
   geocoder.addressSearch(address, function (result, status) {
