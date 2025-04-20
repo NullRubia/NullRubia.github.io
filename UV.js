@@ -75,6 +75,7 @@ function getUVIndex() {
     });
 }
 
+/*
 function moveMapByCityName(address) {
   const geocoder = new kakao.maps.services.Geocoder();
   geocoder.addressSearch(address, function (result, status) {
@@ -92,7 +93,7 @@ function moveMapByCityName(address) {
   });
 }
 
-/*function initMap() {
+function initMap() {
   map = new kakao.maps.Map(document.getElementById("map"), {
     center: new kakao.maps.LatLng(37.566826, 126.9786567),
     level: 9,
