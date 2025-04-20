@@ -75,7 +75,6 @@ function getUVIndex() {
     });
 }
 
-
 function moveMapByCityName(address) {
   const geocoder = new kakao.maps.services.Geocoder();
   geocoder.addressSearch(address, function (result, status) {
