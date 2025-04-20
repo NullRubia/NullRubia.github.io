@@ -7,7 +7,7 @@ function getUVIndex() {
   const regionName = regionSelect.options[regionSelect.selectedIndex].text;
 
   const serviceKey =
-    "vZcbeZUzwbrgx0iB/POXYTFGBY7GoKnVTELcbLYcYjPk5gPwiLApjLiyxa44E0yYtTKduHkwxuvtO4UQq7l5Yg=="; // 실제 키로 교체
+    "vZcbeZUzwbrgx0iB/POXYTFGBY7GoKnVTELcbLYcYjPk5gPwiLApjLiyxa44E0yYtTKduHkwxuvtO4UQq7l5Yg==";
   const now = new Date();
   const yyyy = now.getFullYear();
   const mm = String(now.getMonth() + 1).padStart(2, "0");
