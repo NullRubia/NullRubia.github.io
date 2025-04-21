@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "Ownglyph_ParkDaHyun";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: "Ownglyph_ParkDaHyun";
+}
+body {
+  background: #f4f6f9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 50px;
+}
+
+form {
+  background: aqua;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: black;
+  background-color: skyblue;
+  border-radius: 10px;
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: lightcyan;
+  box-sizing: border-box;
+}
+
+input[type="radio"] {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #3730a3;
+}
+
+.ssn {
+  width: calc(50% - 10px);
+  margin-right: 10px;
+}
+
+.ssn + button {
+  margin-top: 10px;
+  display: inline-block;
+}
+#ssnfiled {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+  }
+
+  .ssn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .ssn + button {
+    display: block;
+    width: 100%;
+  }
+}
