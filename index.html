@@ -19,6 +19,7 @@
       src="https://kit.fontawesome.com/133260cff9.js"
       crossorigin="anonymous"
     ></script>
+    <script defer src="./main.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -37,6 +38,9 @@
           <li><a href="#contact" class="header__menu__item">연락처</a></li>
         </ul>
       </nav>
+      <button class="header__toggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </header>
     <!-- Header 끝 -->
 
@@ -44,11 +48,14 @@
     <main>
       <!-- Home 시작 -->
       <section id="home">
+        <div class="home__container">
         <img class="home__avatar" src="./images/cat.png" alt="KSJ's profile" />
         <h2 class="home__title">안녕하세요.<br>
-          <strong class="home__title--string">김시준</strong>입니다</h2>
+          <strong class="home__title--strong">김시준</strong>입니다</h2>
         <p class="home__description">AI활용 웹 개발 지망자 김시준 입니다.</p>
-        <a href="#contact" class="home__contact">연락처</a>
+        <a class="home__contact">연락처 보기</a>
+        <ul id="tel"></ul>
+        </div>
       </section>
       <!-- Home 끝 -->
 
@@ -58,25 +65,25 @@
         <p class="description">
           네트워크와 소프트웨어를 전공하며 웹 개발자를 꿈꾸는 김시준 입니다.
         </p>
-        <ul class="skills">
-          <li class="skill">
-            <i class="fa-brands fa-html5 skill__icon"></i>
-            <p class="skill__title">Front-end</p>
+        <ul class="majors">
+          <li class="major">
+            <i class="fa-brands fa-html5 major__icon"></i>
+            <p class="major__title">Front-end</p>
             <p>HTML, CSS, JavaScript, Node.js, React</p>
           </li>
-          <li class="skill">
-            <i class="fa-solid fa-network-wired skill__icon"></i>
-            <p class="skill__title">Network</p>
+          <li class="major">
+            <i class="fa-solid fa-network-wired major__icon"></i>
+            <p class="major__title">Network</p>
             <p>Packet Tracer, Wireshark, GNS3</p>
           </li>
-          <li class="skill">
-            <i class="fa-solid fa-server skill__icon"></i>
-            <p class="skill__title">Server</p>
+          <li class="major">
+            <i class="fa-solid fa-server major__icon"></i>
+            <p class="major__title">Server</p>
             <p>UNXI, Linux, AWS, Doker, kubernetes</p>
           </li>
-          <li class="skill">
-            <i class="fa-solid fa-robot skill__icon"></i>
-            <p class="skill__title">AI</p>
+          <li class="major">
+            <i class="fa-solid fa-robot major__icon"></i>
+            <p class="major__title">AI</p>
             <p>Python</p>
           </li>
         </ul>
@@ -109,9 +116,9 @@
           <p>
             분야별 학습 시간과 사용가능한 언어 및 도구
           </p>
-          <div class="tools">
-            <section class="tools__study">
-              <h3 class="tools__title">학습기간</h3>
+          <div class="skills">
+            <section class="skills__study">
+              <h3 class="skills__title">학습기간</h3>
               <ul>
                 <li class="bar">
                   <div class="bar__metadata"><span>Front-end</span><span>5year</span></div>
@@ -128,8 +135,8 @@
               </ul>
             </section>
   
-            <section class="tools__tools">
-              <h3 class="tools__title">사용 가능한 도구</h3>
+            <section class="skills__tools">
+              <h3 class="skills__title">사용 가능한 도구</h3>
               <ul>
                 <li>Packet Tracer</li>
                 <li>Wireshark</li>
@@ -139,8 +146,8 @@
                 <li>Visual Studio Code</li>
               </ul>
             </section>
-            <section class="tools__laguage">
-              <h3 class="tools__title">사용 가능한 언어</h3>
+            <section class="skills__laguage">
+              <h3 class="skills__title">사용 가능한 언어</h3>
               <ul>
                 <li>HTML</li>
                 <li>CSS</li>
@@ -152,62 +159,112 @@
       </section>
         <!-- skills 끝 -->
   
-        <!-- Work 시작 -->
-         <section id="work">
-          <h2 class="work__title">포트폴리오</h2>
-          <p class="work__p">Projects</p>
-          <ul>
+        <!-- work 시작 -->
+      <section id="work" class="section">
+        <div class="max-container">
+          <h2 class="title">포트폴리오</h2>
+          <p class="description">Projects</p>
+          <ul class="categories">
             <li>
-              <a class="work__Box" href="#" target="_blank">
-                <img class="work__img" src="./images/cat.png" alt="project 이미지">
-              <div>
-                <h3 class="work__title">Project #1</h3>
-                <p class="work__p">none</p>
-              </div>
-              </a>
+              <button class="category category--selected" data-category="all">
+                ALL <span class="category__count">10</span>
+              </button>
             </li>
             <li>
-              <a class="work__Box" href="#" target="_blank">
-                <img class="work__img" src="./images/cat.png" alt="project 이미지">
-              <div>
-                <h3 class="work__title">Project #2</h3>
-                <p class="work__p">none</p>
-              </div>
-              </a>
+              <button class="category" data-category="front-end">
+                Front-end <span class="category__count">3</span>
+              </button>
             </li>
             <li>
-              <a class="work__Box" href="#" target="_blank">
-                <img class="work__img" src="./images/cat.png" alt="project 이미지">
-              <div>
-                <h3 class="work__title">Project #3</h3>
-                <p class="work__p"none</p>
-              </div>
-              </a>
+              <button class="category" data-category="mobile">
+                Mobile <span class="category__count">3</span>
+              </button>
             </li>
             <li>
-              <a class="work__Box" href="#" target="_blank">
-                <img class="work__img" src="./images/cat.png" alt="project 이미지">
-              <div>
-                <h3 class="work__title">Project #4</h3>
-                <p class="work__p">none</p>
-              </div>
+              <button class="category" data-category="ai">
+                AI <span class="category__count">4</span>
+              </button>
+            </li>
+          </ul>
+          <ul class="projects">
+            <li class="project" data-type="front-end">
+              <a href="#" target="_blank">
+                <img class="project__img" src="./images/cat.png" alt="project 이미지" />
+                <div class="project__metadata">
+                  <h3 class="project__title" data-type="front-end">Project #1</h3>
+                  <p>프론트엔드 작업 1</p>
+                </div>
               </a>
             </li>
-            <li>
-              <a class="work__Box" href="#" target="_blank">
-                <img class="work__img" src="./images/cat.png" alt="project 이미지">
-              <div>
-                <h3 class="work__title">Project #5</h3>
-                <p class="work__p">none</p>
-              </div>
+            <li class="project" data-type="front-end">
+              <a href="#" target="_blank">
+                <img class="project__img" src="./images/cat.png" alt="project 이미지" />
+                <div class="project__metadata">
+                  <h3 class="project__title">Project #2</h3>
+                  <p>프론트엔드 작업 2</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="front-end">
+              <a href="#" target="_blank">
+                <img class="project__img" src="./images/cat.png" alt="project 이미지" />
+                <div class="project__metadata">
+                  <h3 class="project__title" data-type="front-end">Project #3</h3>
+                  <p>프론트엔드 작업 3</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="mobile">
+              <a href="#" target="_blank">
+                <img class="project__img" src="./images/cat.png" alt="project 이미지" />
+                <div class="project__metadata">
+                  <h3 class="project__title">Project #4</h3>
+                  <p>모바일 작업1</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="mobile">
+              <a href="#" target="_blank">
+                <img class="project__img" src="./images/cat.png" alt="project 이미지" />
+                <div class="project__metadata">
+                  <h3 class="project__title">Project #5</h3>
+                  <p>모바일 작업2</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="mobile">
+              <a href="#" target="_blank">
+                <img class="project__img" src="./images/cat.png" alt="project 이미지" />
+                <div class="project__metadata">
+                  <h3 class="project__title">Project #6</h3>
+                  <p>모바일 작업3</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="ai">
+              <a href="#" target="_blank">
+                <img class="project__img" src="./images/cat.png" alt="project 이미지" />
+                <div class="project__metadata">
+                  <h3 class="project__title">Project #7</h3>
+                  <p>AI1</p>
+                </div>
+              </a>
+            </li>
+            <li class="project" data-type="ai">
+              <a href="#" target="_blank">
+                <img class="project__img" src="./images/cat.png" alt="project 이미지" />
+                <div class="project__metadata">
+                  <h3 class="project__title">Project #8</h3>
+                  <p>AI2</p>
+                </div>
               </a>
             </li>
           </ul>
         </div>
-       </section>
-        <!-- work 끝 -->
+      </section>
+      <!-- work 끝 -->
 
-       <!-- license 시작 -->
+      <!-- license 시작 -->
       <section id="license" class="section">
         <h2 class="title">자격증 및 수상내역</h2>
         <p class="license__description">●보유 목록</p>
@@ -233,15 +290,17 @@
         </ul>
       </section>
       <!-- license 끝 -->
+
       <!-- Arrow Up 시작 -->
       <aside>
-        <a href="#home" title="위로">
+        <a class="arrow-up" href="#home" title="위로">
           <i class="fa-solid fa-arrow-up"></i>
         </a>
       </aside>
       <!-- Arrow Up 끝 -->
     </main>
     <!-- Main 끝 -->
+
     <!-- Footer 시작 -->
     <footer id="contact">
       <h2 class="contact__title">연락주세요!</h2>

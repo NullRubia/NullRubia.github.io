@@ -85,6 +85,9 @@ button:focus {
   align-items: center;
   z-index: 1;
 }
+.header--dark {
+  background-color: var(--color-gray);
+}
 .header__logo {
   display: flex;
   align-items: center;
@@ -96,6 +99,14 @@ button:focus {
 }
 .header__logo__title {
   font-size: 1.8rem;
+}
+.header__toggle {
+  color: white;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+  display: none;
 }
 .header__menu {
   display: flex;
@@ -116,6 +127,7 @@ button:focus {
   background-color: var(--color-primary);
   color: var(--color-text);
   padding: 7rem 1rem 5rem;
+  padding-top: 7rem;
   text-align: center;
 }
 .home__avatar {
@@ -129,7 +141,7 @@ button:focus {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
-.home__title--string {
+.home__title--strong {
   color: var(--color-accent);
 }
 .home__description {
@@ -149,15 +161,25 @@ button:focus {
   color: var(--color-text);
   outline: 2px solid var(--color-accent);
 }
+.git-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.git-link:hover {
+  text-decoration: underline;
+  color: blue;
+}
 
 /* about */
-.skills {
+.majors {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin: 2.5rem 0;
 }
-.skill {
+.major {
   background-color: var(--color-accent-variant);
   padding: 2rem 1rem;
   color: var(--color-primary);
@@ -165,16 +187,16 @@ button:focus {
   cursor: default;
   box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.4);
 }
-.skill__icon {
+.major__icon {
   font-size: 4rem;
   margin: 1rem 0;
   color: var(--color-primary);
   transition: all 1.5s ease;
 }
-.skill:hover .skill__icon {
+.major:hover .major__icon {
   transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg) scale(1.5);
 }
-.skill__title {
+.major__title {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -216,7 +238,7 @@ button:focus {
   color: var(--color-text);
 }
 
-.tools {
+.skills {
   display: grid;
   grid-template-columns: 6fr 4fr;
   margin: 2rem 3rem;
@@ -224,12 +246,12 @@ button:focus {
   overflow: hidden;
   background-color: var(--color-white);
 }
-.tools__title {
+.skills__title {
   color: var(--color-black);
   margin: 1rem 0;
   font-size: 1.2rem;
 }
-.tools__study {
+.skills__study {
   grid-row: span 2; /*2개의 행을 차지하도록 설정 */
   padding: 1rem;
   background-color: var(--color-white);
@@ -255,12 +277,12 @@ button:focus {
   height: 3px;
   background-color: var(--color-black);
 }
-.tools__tools {
+.skills__tools {
   padding: 1rem;
   color: #050a13;
   border: solid black;
 }
-.tools__laguage {
+.skills__laguage {
   padding: 1rem;
   color: #050a13;
   border: solid black;
@@ -268,25 +290,101 @@ button:focus {
 
 /* Work */
 #work {
-  background-color: beige;
-  padding: 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-text);
 }
-.work__Box {
-  color: black;
-  padding: 2rem;
-  margin: 2rem;
+.categories {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem;
+  gap: 1rem;
+}
+.category {
+  position: relative;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  padding: 0.5rem 3rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.category--selected {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+.category__count {
+  opacity: 0;
+  position: absolute;
+  top: -20px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 100%;
+  background-color: var(--color-accent-variant);
+  color: var(--color-text);
+  transition: all 250ms ease-in;
+}
+.category--selected .category__count,
+.category:hover .category__count {
+  opacity: 1;
+  top: 0;
+}
+.projects {
   display: grid;
-  background-color: aliceblue;
-  border-radius: 10px;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
 }
-.work__title {
-  font-size: 3rem;
+.projects.anim-out {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
 }
-.work__p {
-  font-size: 2rem;
+.project {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
 }
-
+.projects__img {
+  width: 100%;
+}
+.project__metadata {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-black);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 250ms ease-in;
+  transform: translateY(-10px);
+}
+.project__metadata:hover {
+  opacity: 0.8;
+  transform: rotateY(0px);
+}
+/*
+요소 뒤에 가상의 요소를 하나 만들어주는 선택자
+content: ""; 아무 내용도 없는 빈 가상 요소를 만듦
+display: block; 가상 요소를 블록 요소처럼 만들어서 크기를 줄 수 있게 함
+*/
+.project__title:after {
+  content: "";
+  display: block;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  margin: 0.5rem 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+/* license */
 /* license */
 #license {
   background-color: antiquewhite;
@@ -315,6 +413,21 @@ button:focus {
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
+/* arrow up */
+.arrow-up {
+  background-color: var(--color-primary);
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  font-size: 3rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 100%;
+  text-align: center;
+  box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+}
+/* footer */
 footer {
   text-align: center;
   width: 100%;
@@ -345,67 +458,69 @@ footer {
   color: blue;
 }
 
-/* 화면 너비가 768px 이상 1023 이하일 때 (태블릿) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .job {
-    justify-content: center;
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 3rem 2rem;
   }
-  .job__name {
-    font-size: 2.3rem;
-    text-align: center;
-  }
-  .job__preiod {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-}
-/* 화면 너비가 767px 이하일 때(모바일) */
-@media (max-width: 767px) {
-  .header {
-    display: block;
-    align-items: center;
-    z-index: 1;
-  }
-  .header__menu {
-    display: flex;
-    gap: 1px;
-  }
-
-  .header__menu__item {
-    padding: 4px 8px;
-  }
-  .header__menu > li {
-    font-size: 0.8rem;
-  }
-  .job {
-    display: block;
-  }
-  .job__img {
-    width: 80%;
-    height: 80%;
-    margin-left: 10%;
-  }
-  .job__name {
-    font-size: 2rem;
-    text-align: center;
-  }
-  .job__preiod {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-  .tools {
-    font-size: 0.5rem;
-    display: block;
-  }
-  .work__title {
+  .title {
     font-size: 2rem;
   }
-  .work__p {
+  .description {
     font-size: 1rem;
   }
-  .work__img {
-    width: 80%;
-    height: 80%;
+  .header {
+    flex-direction: column;
+    align-items: start;
+  }
+  .header__toggle {
+    display: block;
+  }
+  .header__menu {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 4rem;
+    gap: 1rem;
+  }
+  .header__menu.open {
+    display: flex;
+  }
+  .header__nav {
+    width: 100%;
+  }
+  #home {
+    padding-bottom: 3rem;
+  }
+  #home__title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .majors {
+    flex-direction: column;
+    align-items: center;
+  }
+  .major {
+    max-width: 25rem;
+  }
+  .job {
+    justify-content: center;
+    width: 100%;
+  }
+  .job__img {
+    width: 150px;
+    height: 100px;
+  }
+  .skills {
+    grid-template-columns: 1fr;
+  }
+  .categories {
+    flex-direction: column;
+  }
+  .category {
+    width: 100%;
+  }
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
   }
   .license__Box {
     display: block;
@@ -423,5 +538,12 @@ footer {
     height: 150px;
     border-radius: 5px;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.4);
+  }
+  .arrow-up {
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
   }
 }
